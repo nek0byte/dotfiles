@@ -1,0 +1,11 @@
+{
+  "name": "cp",
+  "constributes": {
+    "snippetsk": [
+      {
+        "language": "cpp",
+        "path": "./cpp.json"
+      }
+    ]
+  }
+}

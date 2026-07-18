@@ -1,0 +1,29 @@
+{
+  "CP Boilerplate": {
+    "prefix": "cp",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "",
+      "#define ll long long",
+      "",
+      "void solve() {",
+      "    $0",
+      "}",
+      "",
+      "int32_t main() {",
+      "    ios_base::sync_with_stdio(false);",
+      "    cin.tie(NULL);",
+      "    ",
+      "    int N;",
+      "    cin >> N;",
+      "    while (N--) {",
+      "        solve();",
+      "    }",
+      "",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Competitive Programming Boilerplate"
+  }
+}
