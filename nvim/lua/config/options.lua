@@ -61,3 +61,19 @@ vim.filetype.add({
 vim.g.lazyvim_prettier_needs_config = true
 vim.g.lazyvim_picker = "telescope"
 vim.g.lazyvim_cmp = "blink.cmp"
+
+-- sync vim and system clipboards
+vim.schedule(function()
+    local is_ssh = vim.env.SSH_TTY or vim.env.SSH_CONNECTION
+
+    if is_ssh then
+        vim.g.clipboard = nil
+        vim.opt.clipboard = ""
+    else
+        vim.g.clipboard = nil
+        vim.opt.clipboard = "unnamedplus"
+    end
+end)
+
+-- raise dialog if closing unsaved buffer
+vim.o.confirm = true

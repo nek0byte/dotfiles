@@ -182,6 +182,7 @@ return {
                     theme = "dropdown",
                     -- disables netrw and use telescope-file-browser in its place
                     hijack_netrw = true,
+                    hidden = true,
                     mappings = {
                         -- your custom insert mode mappings
                         ["n"] = {
@@ -248,5 +249,92 @@ return {
                 },
             },
         },
+    },
+
+    {
+        "karb94/neoscroll.nvim",
+        opts = {
+            mappings = {
+                "<C-u>",
+                "<C-d>",
+                "<C-b>",
+                "<C-f>",
+                "<C-y>",
+                "<C-e>",
+                "zt",
+                "zz",
+                "zb",
+            },
+            hide_cursor = true,
+            stop_eof = true,
+            respect_scrolloff = false,
+            cursor_scrolls_alone = true,
+            duration_multiplier = 1.0,
+            easing = "linear",
+            pre_hook = nil,
+            post_hook = nil,
+            performance_mode = false,
+            ignore_events = {
+                "WinScrolled",
+                "CursorMoved",
+            },
+        },
+    },
+
+    {
+        "nvim-mini/mini.animate",
+        version = "*",
+        opts = function()
+            local animate = require("mini.animate")
+            local mouse_scrolled = false
+            for _, scroll in ipairs({ "Up", "Down" }) do
+                local key = "<ScrollWheel" .. scroll .. ">"
+                vim.keymap.set({ "", "i" }, key, function()
+                    mouse_scrolled = true
+                    return key
+                end, { expr = true })
+            end
+            return {
+                cursor = {
+                    enable = true,
+                    timing = animate.gen_timing.quadratic({ easing = "in-out", duration = 200, unit = "total" }),
+                    path = animate.gen_path.line({
+                        predicate = function()
+                            return true
+                        end,
+                    }),
+                },
+                scroll = {
+                    enable = true,
+                    timing = animate.gen_timing.quadratic({ easing = "in-out", duration = 150, unit = "total" }),
+                    subscroll = animate.gen_subscroll.equal({
+                        max_output_steps = 200,
+                        predicate = function(total_scroll)
+                            if mouse_scrolled then
+                                mouse_scrolled = false
+                                return false
+                            end
+                            return total_scroll > 1
+                        end,
+                    }),
+                },
+                resize = {
+                    enable = true,
+                    timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+                },
+                open = {
+                    enable = true,
+                    timing = animate.gen_timing.quadratic({ easing = "in-out", duration = 200, unit = "total" }),
+                    winconfig = animate.gen_winconfig.wipe({ direction = "from_edge" }),
+                    winblend = animate.gen_winblend.linear({ from = 80, to = 100 }),
+                },
+                close = {
+                    enable = true,
+                    timing = animate.gen_timing.quadratic({ easing = "in-out", duration = 0, unit = "total" }),
+                    winconfig = animate.gen_winconfig.wipe({ direction = "from_edge" }),
+                    winblend = animate.gen_winblend.linear({ from = 100, to = 80 }),
+                },
+            }
+        end,
     },
 }
