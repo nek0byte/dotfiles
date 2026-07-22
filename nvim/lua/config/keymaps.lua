@@ -40,3 +40,7 @@ keymap.set("n", "<C-n>", "<leader>e", opts)
 keymap.set("n", "<A-e>", "$", opts)
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>", opts)
+
+-- window management
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
