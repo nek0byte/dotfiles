@@ -56,7 +56,9 @@ return {
     {
         "rcarriga/nvim-notify",
         opts = {
-            timeout = 5000,
+            timeout = 2000,
+            background_color = "#000000",
+            render = "wrapper-compact",
         },
     },
 
@@ -135,6 +137,24 @@ return {
                 }),
             }
         end,
+    },
+
+    -- Lazygit integration
+    {
+        "kdheepak/lazygit.nvim",
+        opts = {
+            key = {
+                {
+                    ";c",
+                    ":LazyGit<Return>",
+                    silent = true,
+                    noremap = true,
+                },
+            },
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
+        },
     },
 
     {

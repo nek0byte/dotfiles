@@ -4,7 +4,6 @@
 
 vim.g.mapleader = " "
 
-vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
 vim.opt.number = true
@@ -47,9 +46,7 @@ vim.opt.formatoptions:append({ "r" })
 vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
 vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
-if vim.fn.has("nvim-0.8") == 1 then
-    vim.opt.cmdheight = 0
-end
+vim.opt.cmdheight = 0
 
 -- File types
 vim.filetype.add({
@@ -77,3 +74,5 @@ end)
 
 -- raise dialog if closing unsaved buffer
 vim.o.confirm = true
+
+

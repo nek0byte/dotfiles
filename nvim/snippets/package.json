@@ -1,7 +1,7 @@
 {
   "name": "cp",
-  "constributes": {
-    "snippetsk": [
+  "contributes": {
+    "snippets": [
       {
         "language": "cpp",
         "path": "./cpp.json"

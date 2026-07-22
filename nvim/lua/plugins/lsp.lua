@@ -1,4 +1,3 @@
-local pyright = require("lspconfig.configs.pyright")
 return {
     -- tools
     {
@@ -66,7 +65,7 @@ return {
                     settings = {
                         python = {
                             analysis = {
-                                typeChekingMode = "basic",
+                                typeCheckingMode = "basic",
                                 autoSearchPath = true,
                                 useLibraryCodeForTypes = true,
                                 diagnosticsMode = "workspace",
@@ -165,6 +164,12 @@ return {
                     has = "definition",
                 },
             })
+        end,
+    },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("util.lsp_toggle")
         end,
     },
 }

@@ -223,14 +223,14 @@ return {
                 function()
                     require("close_buffers").delete({ type = "hidden" })
                 end,
-                "Close Hidden Buffers",
+                desc = "Close Hidden Buffers",
             },
             {
                 "<leader>tu",
                 function()
                     require("close_buffers").delete({ type = "nameless" })
                 end,
-                "Close Nameless Buffers",
+                desc = "Close Nameless Buffers",
             },
         },
     },
@@ -325,8 +325,8 @@ return {
                 open = {
                     enable = true,
                     timing = animate.gen_timing.quadratic({ easing = "in-out", duration = 200, unit = "total" }),
-                    winconfig = animate.gen_winconfig.wipe({ direction = "from_edge" }),
                     winblend = animate.gen_winblend.linear({ from = 80, to = 100 }),
+                    winconfig = animate.gen_winconfig.wipe({ direction = "from_edge" }),
                 },
                 close = {
                     enable = true,
