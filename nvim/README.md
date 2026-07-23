@@ -1,1 +1,1 @@
-# Lazyvim Config
+## Lazyvim Config (WSL-Ubuntu)
